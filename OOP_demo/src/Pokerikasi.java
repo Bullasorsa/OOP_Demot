@@ -93,7 +93,7 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 					parienmaara=parienmaara+1;
 				}
 		 }
-		 return false;
+		 return true;
 	 }
 	
 	
