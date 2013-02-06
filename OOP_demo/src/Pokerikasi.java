@@ -90,9 +90,10 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 		 int parienmaara =0;
 		 for(int m=0;m<kasi.size();m++){
 				if (kasi.get(m).annaArvo() == kasi.get(m+1).annaArvo()){
-					parienmaara=pariemaara+1;
+					parienmaara=parienmaara+1;
 				}
-		 
+		 }
+		 return false;
 	 }
 	
 	
