@@ -43,9 +43,9 @@ public class PokerGame {
       return player.raiseStake(amount);
   }
   
-  public boolean playerChangeCards(PokerPlayer player, int[] cardsToChange) {
-      return player.changeCards(cardsToChange);
-  }
+//  public boolean playerChangeCards(PokerPlayer player, int[] cardsToChange) {
+//      return player.changeCards(cardsToChange);
+//  }
   
   public String toString() {
     String gameStatus = "Panos: " + stake + "\n";

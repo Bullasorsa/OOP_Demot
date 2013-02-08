@@ -22,10 +22,34 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 	}
 	
 	 int kadenArvo(){
-		return 0;
+		if (onkoVariSuora()){
+			return 9;
+		}
+		if(onkoNeloset())
+			return 8;
+		if(onkoTayskasi())
+			return 7;
+		if(onkoVari())
+			return 6;
+		if(onkoSuora())
+			return 5;
+		if(onkoKolmoset())
+			return 4;
+		if(onkoKaksiparia())
+			return 3;
+		if(onkoPari())
+			return 2;
+		else
+			return 1;
 	}
+	 
+	 
+	 
+	 
+	 
+	 
 	 boolean onkoPari(){
-		for(int i=0;i<kasi.size();i++){
+		for(int i=0;i<kasi.size()-1;i++){
 		if (kasi.get(i).annaArvo() == kasi.get(i+1).annaArvo()){
 			return true;
 		}
@@ -35,7 +59,7 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 	}
 	
 	 boolean onkoKolmoset(){
-		for(int i=0;i<kasi.size();i++){
+		for(int i=0;i<kasi.size()-2;i++){
 			if (kasi.get(i).annaArvo() == kasi.get(i+1).annaArvo()){
 				if(kasi.get(i+1).annaArvo() == kasi.get(i+2).annaArvo()){
 				return true;
@@ -47,7 +71,7 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 		}	
 	
 	boolean  onkoNeloset(){
-		for(int k=0;k<kasi.size();k++){
+		for(int k=0;k<kasi.size()-2;k++){
 			if (kasi.get(k).annaArvo() == kasi.get(k+1).annaArvo()){
 				if(kasi.get(k+1).annaArvo() == kasi.get(k+2).annaArvo()){
 					if(kasi.get(k+2).annaArvo()==kasi.get(k+3).annaArvo()){
@@ -70,13 +94,21 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 	}
 	 
 	 boolean onkoVari(){
+		 String onkoVari=kasi.get(0).annaMaa();
 			for(int o=1;o<kasi.size();o++){
-				if(kasi.get(o).annaMaa().equals(kasi.get(o-1).annaMaa())){
-					return true;
+				if(!kasi.get(o).annaMaa().equals(onkoVari)){
+					return false;
 				}
 			}
-			return false;
+			return true;
 		}
+	 
+	 boolean onkoVariSuora(){
+		 if (onkoVari() && onkoSuora()){
+			 return true;
+		 }
+		 return false;
+	 }
 	 
 	 boolean onkoTayskasi(){
 		 if(kasi.get(0).annaArvo() == kasi.get(1).annaArvo() && kasi.get(2).annaArvo() == kasi.get(3).annaArvo() && kasi.get(3).annaArvo() == kasi.get(4).annaArvo() 
@@ -88,20 +120,25 @@ public class Pokerikasi implements Comparable<Pokerikasi> {
 	
 	 boolean onkoKaksiparia(){
 		 int parienmaara =0;
-		 for(int m=0;m<kasi.size();m++){
+		 for(int m=0;m<kasi.size()-1;m++){
 				if (kasi.get(m).annaArvo() == kasi.get(m+1).annaArvo()){
 					parienmaara=parienmaara+1;
 				}
+				
 		 }
-		 return true;
+		 if(parienmaara==2){
+				return true;
+			}
+		 return false;
 	 }
 	
 	
 
 	@Override
 	public int compareTo(Pokerikasi o) {
-		// TODO Auto-generated method stub
-		return 0;
+			
+		
+		return this.kadenArvo()-o.kadenArvo();
 	}
 	
 	

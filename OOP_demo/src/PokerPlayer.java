@@ -4,26 +4,23 @@ public class PokerPlayer {
   private String name;
   private double money;
   private PokerGame game;
-  private ArrayList<Pelikortti> hand;
+  private Pokerikasi hand;
   
   public PokerPlayer(String playerName, double credit, PokerGame playes) {
     name = playerName;
     money = credit;
     game = playes;
-    hand = new ArrayList<Pelikortti>();
+    hand = new Pokerikasi();
   }
   
   public String getName() {
     return name;
   }
   
-  public boolean takeCard(Pelikortti card) {
-    if (hand.size() < 5) {
-      hand.add(card);
-      return true;
-    }
-    else
-      return false;
+  public void takeCard(Pelikortti card) {
+    
+      hand.lisaaKortti(card);
+      
   }
   
   public boolean raiseStake(double amount) {
@@ -36,7 +33,7 @@ public class PokerPlayer {
       return false;
   }
   
-  public boolean changeCards(int[] cardsToChange) {
+ /* public boolean changeCards(int[] cardsToChange) {
     if( cardsToChange.length > 0 && cardsToChange.length < 6 ) {
       for( int i=0; i < cardsToChange.length; i++ ) {
     	  Pelikortti card = game.getCard();
@@ -56,11 +53,11 @@ public class PokerPlayer {
       }
     return playersHand;
   }
-  
+  */
   public String toString() {
     String player = "Nimi: " + name + "\n";
     player = player + "Rahaa: " + money + "\n";
-    player = player + "Kortit:\n" + playersHand();
+    player = player + "Kortit:\n" + hand;
     return player;
   }
 }
